@@ -2,20 +2,21 @@ package dsaa.algorithm.sort;
 
 import dsaa.utils.PrintHelper;
 
-public class InsertionSort {
+public class SelectionSort {
 
     private static void sort(int[] a, int n) {
-        for (int i = 1; i < a.length; i++) {
-            int value = a[i];
-            int j = i - 1;
-            for (; j >= 0; j--) {
-                if (a[j] > value) {
-                    a[j + 1] = a[j];
-                } else {
-                    break;
+        for (int i = 0; i < a.length; i++) {
+            int min = i;
+            for (int j = i + 1; j < a.length; j++) {
+                if (a[min] > a[j]) {
+                    min = j;
                 }
             }
-            a[j + 1] = value;
+            if (min != i) {
+                int tmp = a[min];
+                a[min] = a[i];
+                a[i] = tmp;
+            }
         }
     }
 
